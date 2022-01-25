@@ -1,0 +1,189 @@
+:root {
+  --tile-width: 60px;
+  --tile-height: 60px;
+}
+body {
+  background-color: black;
+  color: #dad8d8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#gameBoard {
+  width: 450px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topBar {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-bottom: 2px solid gray;
+}
+.title {
+  margin: auto;
+  width: 70%;
+}
+.topBar button {
+  border: none;
+  margin: 3px;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 100%;
+  font-size: .5em;
+}
+/* .help {
+  font-size: .65em;
+  border: 2px solid rgb(116, 114, 114);
+  border-radius: 100%;
+  width: 1.25em;
+  height: 1.25em;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 1%;
+  background-color: rgb(116, 114, 114);
+} */
+
+#keyboard {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+#keyboard button {
+  margin: 2px;
+  height: 4em;
+  min-width: 3em;
+  border-radius: 15%;
+  border: none;
+  font-family: sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  font-size: .7em;
+}
+
+#guessBox {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.guessLine {
+  /* border: 1px solid blue; */
+  display: inline-flex;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.tileCon {
+  border: 2px solid gray;
+  /* position: relative;  */
+  width: var(--tile-width);
+  height: var(--tile-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 2px;
+}
+.tileP {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tile {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border: 1px solid grey;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+.tileF, .tileB {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.tileB {
+  transform: rotateY(180deg);
+}
+.flipper {
+  transform: rotateY(180deg);
+}
+
+.modalBG {
+  display: none;
+  position: fixed;
+  margin: auto;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.modalBox {
+  width:425px;
+  /* height: 75px; */
+  margin: 5em auto;
+  background-color: rgb(63, 62, 62);
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 10px 5px rgb(20, 20, 20);
+  border-radius: 5px;
+}
+#winBox {
+  display: none;
+}
+#statBox {
+  display:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#statBar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#statBar div {
+  display: flex;
+  justify-content: space-around;
+}
+#graphBox {
+  width: 80%;
+  flex-direction: column;
+  border: 1px dotted blue;
+}
+
+#settingsBox {
+  display: none;
+}

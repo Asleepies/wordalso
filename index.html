@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="scripts.js"></script>
+  </head>
+
+  <body>
+    <div id='gameBoard'>
+      <div class='topBar'>
+        <div class='title'>Wordlso</div>
+        <button class='help' onclick="settings()">?</button>
+        <!-- <button class='settings' onclick="settings()">&#9881</button> -->
+      </div>
+      <div id="guessBox">
+        <div class='guessLine' id="guess0">
+          <div class='tileCon' id='g0-0'>
+            <div class='tileP'  id='g0-0p'>
+              <div class="tileF" id='g0-0f'></div>
+              <div class="tileB" id='g0-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g0-1'>
+            <div class='tileP'  id='g0-1p'>
+              <div class="tileF" id='g0-1f'></div>
+              <div class="tileB" id='g0-1b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g0-2'>
+            <div class='tileP'  id='g0-2p'>
+              <div class="tileF" id='g0-2f'></div>
+              <div class="tileB" id='g0-2b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g0-3'>
+            <div class='tileP'  id='g0-3p'>
+              <div class="tileF" id='g0-3f'></div>
+              <div class="tileB" id='g0-3b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g0-4'>
+            <div class='tileP'  id='g0-4p'>
+              <div class="tileF" id='g0-4f'></div>
+              <div class="tileB" id='g0-4b'></div>
+            </div>
+          </div>
+        </div>
+        <div class='guessLine' id="guess1">
+          <div class='tileCon' id='g1-0'>
+            <div class='tileP'  id='g1-0p'>
+              <div class="tileF" id='g1-0f'></div>
+              <div class="tileB" id='g1-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g1-1'>
+            <div class='tileP'  id='g1-1p'>
+              <div class="tileF" id='g1-1f'></div>
+              <div class="tileB" id='g1-1b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g1-2'>
+            <div class='tileP'  id='g1-2p'>
+              <div class="tileF" id='g1-2f'></div>
+              <div class="tileB" id='g1-2b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g1-3'>
+            <div class='tileP'  id='g1-3p'>
+              <div class="tileF" id='g1-3f'></div>
+              <div class="tileB" id='g1-3b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g1-4'>
+            <div class='tileP'  id='g1-4p'>
+              <div class="tileF" id='g1-4f'></div>
+              <div class="tileB" id='g1-4b'></div>
+            </div>
+          </div>
+        </div>
+        <div class='guessLine' id="guess2">
+          <div class='tileCon' id='g2-0'>
+            <div class='tileP'  id='g2-0p'>
+              <div class="tileF" id='g2-0f'></div>
+              <div class="tileB" id='g2-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g2-1'>
+            <div class='tileP'  id='g2-1p'>
+              <div class="tileF" id='g2-1f'></div>
+              <div class="tileB" id='g2-1b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g2-2'>
+            <div class='tileP'  id='g2-2p'>
+              <div class="tileF" id='g2-2f'></div>
+              <div class="tileB" id='g2-2b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g2-3'>
+            <div class='tileP'  id='g2-3p'>
+              <div class="tileF" id='g2-3f'></div>
+              <div class="tileB" id='g2-3b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g2-4'>
+            <div class='tileP'  id='g2-4p'>
+              <div class="tileF" id='g2-4f'></div>
+              <div class="tileB" id='g2-4b'></div>
+            </div>
+          </div>
+        </div>
+        <div class='guessLine' id="guess3">
+          <div class='tileCon' id='g3-0'>
+            <div class='tileP'  id='g3-0p'>
+              <div class="tileF" id='g3-0f'></div>
+              <div class="tileB" id='g3-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g3-1'>
+            <div class='tileP'  id='g3-1p'>
+              <div class="tileF" id='g3-1f'></div>
+              <div class="tileB" id='g3-1b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g3-2'>
+            <div class='tileP'  id='g3-2p'>
+              <div class="tileF" id='g3-2f'></div>
+              <div class="tileB" id='g3-2b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g3-3'>
+            <div class='tileP'  id='g3-3p'>
+              <div class="tileF" id='g3-3f'></div>
+              <div class="tileB" id='g3-3b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g3-4'>
+            <div class='tileP'  id='g3-4p'>
+              <div class="tileF" id='g3-4f'></div>
+              <div class="tileB" id='g3-4b'></div>
+            </div>
+          </div>
+        </div>
+        <div class='guessLine' id="guess4">
+          <div class='tileCon' id='g4-0'>
+            <div class='tileP'  id='g4-0p'>
+              <div class="tileF" id='g4-0f'></div>
+              <div class="tileB" id='g4-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g4-1'>
+            <div class='tileP'  id='g4-1p'>
+              <div class="tileF" id='g4-1f'></div>
+              <div class="tileB" id='g4-1b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g4-2'>
+            <div class='tileP'  id='g4-2p'>
+              <div class="tileF" id='g4-2f'></div>
+              <div class="tileB" id='g4-2b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g4-3'>
+            <div class='tileP'  id='g4-3p'>
+              <div class="tileF" id='g4-3f'></div>
+              <div class="tileB" id='g4-3b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g4-4'>
+            <div class='tileP'  id='g4-4p'>
+              <div class="tileF" id='g4-4f'></div>
+              <div class="tileB" id='g4-4b'></div>
+            </div>
+          </div>
+        </div>
+        <div class='guessLine' id="guess5">
+          <div class='tileCon' id='g5-0'>
+            <div class='tileP'  id='g5-0p'>
+              <div class="tileF" id='g5-0f'></div>
+              <div class="tileB" id='g5-0b'></div>
+            </div>
+          </div>
+          <div class='tileCon' id='g5-1'>
+            <div class='tileP'  id='g5-1p'>
+              <div class="tileF" id='g5-1f'></div>
+              <div class="tileB" id='g5-1b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g5-2'>
+            <div class='tileP'  id='g5-2p'>
+              <div class="tileF" id='g5-2f'></div>
+              <div class="tileB" id='g5-2b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g5-3'>
+            <div class='tileP'  id='g5-3p'>
+              <div class="tileF" id='g5-3f'></div>
+              <div class="tileB" id='g5-3b'></div>
+            </div>
+          </div>
+      
+          <div class='tileCon' id='g5-4'>
+            <div class='tileP'  id='g5-4p'>
+              <div class="tileF" id='g5-4f'></div>
+              <div class="tileB" id='g5-4b'></div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <div id="keyboard">
+        <div id='keyrow1'>
+          <button data-key="Q" id="Q">Q</button>
+          <button data-key="W" id="W">W</button>
+          <button data-key="E" id="E">E</button>
+          <button data-key="R" id="R">R</button>
+          <button data-key="T" id="T">T</button>
+          <button data-key="Y" id="Y">Y</button>
+          <button data-key="U" id="U">U</button>
+          <button data-key="I" id="I">I</button>
+          <button data-key="O" id="O">O</button>
+          <button data-key="P" id="P">P</button>
+        </div>
+        <div id='keyrow2'>
+          <button data-key="A" id="A">A</button>
+          <button data-key="S" id="S">S</button>
+          <button data-key="D" id="D">D</button>
+          <button data-key="F" id="F">F</button>
+          <button data-key="G" id="G">G</button>
+          <button data-key="H" id="H">H</button>
+          <button data-key="J" id="J">J</button>
+          <button data-key="K" id="K">K</button>
+          <button data-key="L" id="L">L</button>
+        </div>
+        <div id='keyrow3'>
+          <button data-key="enter" id="enter" onclick="checkWord()">Enter</button>
+          <button data-key="Z" id="Z">Z</button>
+          <button data-key="X" id="X">X</button>
+          <button data-key="C" id="C">C</button>
+          <button data-key="V" id="V">V</button>
+          <button data-key="B" id="B">B</button>
+          <button data-key="N" id="N">N</button>
+          <button data-key="M" id="M">M</button>
+          <button data-key="back" id="back">Back</button>
+        </div>
+      </div>
+      <div class="modalBG" id='modalBG'>
+        <div class='modalBox' id="winBox">
+          You did it!
+          <button onclick="closeWindow('winBox')">Yay</button>
+        </div>
+        <div class='modalBox' id="statBox">
+          <div id='statBar'>
+            <div>
+              <p>0</p>
+              <p>0</p>
+              <p>0</p>
+              <p>0</p>
+            </div>
+            <div>
+              <p>played</p>
+              <p>win %</p>
+              <p>current streak</p>
+              <p>longest streak</p>
+            </div>
+          </div>
+          <div id='graphBox'>
+            <canvas id="statGraph"></canvas>
+          </div>
+          <button onclick="closeWindow('statBox')">close</button>
+        </div>
+        <div class='modalBox' id="settingsBox">
+          settings menu
+          <button onclick=''>How To</button>
+          <button onclick='getWord()'>new word</button>
+          <button onclick="closeWindow('settingsBox')">close</button>
+        </div>
+      </div>
+    </div>
+    <p id='winWord'>to win!</p>
+    <button onclick='getWord()'>new word</button>
+    <button onclick='sendStats()'>stats Save</button>
+    <button onclick='getStats()'>stats Get</button>
+    <button onclick='saver()'>saver</button>
+    <button onclick='loader()'>loader</button>
+    <button onclick='remover()'>remover</button>
+  </body>
+</html>
