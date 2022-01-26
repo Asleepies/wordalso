@@ -81,6 +81,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .guessLine {
@@ -105,19 +106,11 @@ body {
   width: 100%;
   height: 100%;
   transition: transform 1s;
+  
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.tile {
-  display: flex;
-  width: 50px;
-  height: 50px;
-  border: 1px solid grey;
-  justify-content: center;
-  align-items: center;
-  margin: 2px;
 }
 .tileF, .tileB {
   position: absolute;
@@ -135,8 +128,28 @@ body {
 .tileB {
   transform: rotateY(180deg);
 }
+.exTile {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+}
 .flipper {
   transform: rotateY(180deg);
+}
+
+.ping {
+  display: flex;
+  color:rgb(29, 29, 29);
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  background-color: rgb(241, 241, 241);
+  box-shadow: 0 0 10px 5px rgb(20, 20, 20);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.pong {
+  transition-delay: .5s;
 }
 
 .modalBG {
@@ -151,15 +164,35 @@ body {
 }
 .modalBox {
   width:425px;
-  /* height: 75px; */
   margin: 5em auto;
-  background-color: rgb(63, 62, 62);
+  background-color: rgb(24, 24, 24);
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 10px 5px rgb(20, 20, 20);
   border-radius: 5px;
 }
+#howTo {
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+#howTo button {
+  position: absolute;
+  right: 0;
+  font-size: 1em;
+  color: white;
+  border: none;
+  background-color: rgba(124, 89, 89, 0);
+
+}
+#examples {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #winBox {
   display: none;
 }

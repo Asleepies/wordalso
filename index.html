@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="scripts.js"></script>
+    <script defer src="scripts.js" charset="utf-8"></script>
+    
   </head>
 
   <body>
     <div id='gameBoard'>
       <div class='topBar'>
         <div class='title'>Wordlso</div>
-        <button class='help' onclick="settings()">?</button>
-        <!-- <button class='settings' onclick="settings()">&#9881</button> -->
+        <button class='help' onclick="openWindow('howTo')">?</button>
+        <!-- <button class='settings' onclick="settings()">&#9881;</button> -->
       </div>
       <div id="guessBox">
         <div class='guessLine' id="guess0">
@@ -225,7 +226,7 @@
             </div>
           </div>
         </div>
-      
+        <div class='ping' id='nwrd'>Not in word list</div>
       </div>
       <div id="keyboard">
         <div id='keyrow1'>
@@ -260,10 +261,59 @@
           <button data-key="B" id="B">B</button>
           <button data-key="N" id="N">N</button>
           <button data-key="M" id="M">M</button>
-          <button data-key="back" id="back">Back</button>
+          <button data-key="back" id="back" onclick="backspace()">Back</button>
         </div>
       </div>
       <div class="modalBG" id='modalBG'>
+        <div class='modalBox' id="howTo">
+          <div id='instruct'>
+            Guess the word in 6 tries <br>
+            Each guess must be a valid word. Press Enter to submit. <br>
+            The colors of the tiles will change to show how close your guess is. <br>
+          </div>
+          <div id='examples'>Examples:
+            <div class='guessLine' id="ex0">
+              <div class='tileCon' id='ex0-0'>
+                <div class='tileP exTile'  id='ex0-0p'>
+                  <div class="tileF" id='ex0-0f'>H</div>
+                  <div class="tileB" id='ex0-0b'>H</div>
+                </div>
+              </div>
+              <div class='tileCon exTile' id='ex0-1'>E</div>
+              <div class='tileCon exTile' id='ex0-2'>A</div>
+              <div class='tileCon exTile' id='ex0-3'>R</div>
+              <div class='tileCon exTile' id='ex0-4'>T</div>
+            </div>
+            The H is in the word and in the correct spot. <br>
+            <div class='guessLine' id="ex1">
+              <div class='tileCon exTile' id='ex1-1'>C</div>
+              <div class='tileCon exTile' id='ex1-2'>H</div>
+              <div class='tileCon' id='ex1-0'>
+                <div class='tileP'  id='ex1-0p'>
+                  <div class="tileF" id='ex1-0f'>A</div>
+                  <div class="tileB" id='ex1-0b'>A</div>
+                </div>
+              </div>
+              <div class='tileCon exTile' id='ex1-3'>R</div>
+              <div class='tileCon exTile' id='ex1-4'>T</div>
+            </div>
+            The A is in the word, but not in the correct spot. <br>
+            <div class='guessLine' id="ex2">
+              <div class='tileCon exTile'>A</div>
+              <div class='tileCon exTile'>P</div>
+              <div class='tileCon exTile'>A</div>
+              <div class='tileCon exTile'>R</div>
+              <div class='tileCon' id='ex2-0'>
+                <div class='tileP'  id='ex2-0p'>
+                  <div class="tileF" id='ex2-0f'>T</div>
+                  <div class="tileB" id='ex2-0b'>T</div>
+                </div>
+              </div>
+            </div>
+            The T is not in the word.
+          </div>
+          <button onclick="closeWindow('howTo')">&#10006;</button>
+        </div>
         <div class='modalBox' id="winBox">
           You did it!
           <button onclick="closeWindow('winBox')">Yay</button>
@@ -290,18 +340,18 @@
         </div>
         <div class='modalBox' id="settingsBox">
           settings menu
-          <button onclick=''>How To</button>
+          <button onclick='closeWindow("settingsBox"); openWindow("howTo")'>How To</button>
           <button onclick='getWord()'>new word</button>
           <button onclick="closeWindow('settingsBox')">close</button>
         </div>
       </div>
     </div>
-    <p id='winWord'>to win!</p>
+    <!-- <p id='winWord'>to win!</p>
     <button onclick='getWord()'>new word</button>
     <button onclick='sendStats()'>stats Save</button>
     <button onclick='getStats()'>stats Get</button>
     <button onclick='saver()'>saver</button>
     <button onclick='loader()'>loader</button>
-    <button onclick='remover()'>remover</button>
+    <button onclick='remover()'>remover</button> -->
   </body>
 </html>
