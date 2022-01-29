@@ -1,24 +1,128 @@
-// import { allowed, answers } from './wordles.js';
 let answers;
 let allowed;
-
-let games = {
-  1: 0,
-  2: 3,
-  3: 5,
-  4: 8,
-  5: 3,
-  6: 6
-}
 
 let guessNum = 0;
 let guess = '';
 let guesses = [];
-let winWord = 'STRAP';
+let winWord = 'child';
+let used = [];
+let games = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, fail: 0 }
+let currentStreak = 0;
+let maxStreak = 0;
+let total =  0;
+let wins = 0;
+let winPercent = 0;
 
-const winDisplay = document.getElementById('winWord')
-// winDisplay.innerHTML = winWord;
-
+function playerStats() {
+  let winning = 0;
+  for (let [k,v] of Object.entries(games)) {
+    if (k != 'fail') {
+      winning += v
+    }
+  }
+  stats.wins = winning
+  stats.winPercent = winning / total;
+}
+function statBar(id) {
+let statsBar = `
+<div>
+  <div id='played'>${total}</div>
+  <div>Played</div>
+</div>
+<div>
+  <div id='wins'>${winPercent}%</div>
+  <div>Wins</div>
+</div>
+<div>
+  <div id='currStreak'>${currentStreak}</div>
+  <div>Current Streak</div>
+</div>
+<div>
+  <div id='maxStreak'>${maxStreak}</div>
+  <div>Longest Streak</div>
+</div>
+`
+document.getElementById(id).innerHTML = statsBar;
+}
+function sendStats() {
+  // console.log('stats saved')
+}
+function showMe() {
+  console.log('guessNum', guessNum)
+  console.log('guess', guess)
+  console.log('guesses', guesses)
+  console.log('winWord', winWord)
+  console.log('used', used)
+  console.log('games', games)
+  console.log('currentStreak', currentStreak)
+  console.log('maxStreak', maxStreak)
+  console.log('total', total)
+  console.log('wins', wins)
+  console.log('winPercent', winPercent)
+}
+function saver() {
+  let wordlso = {
+    guesses: guesses,
+    winWord: winWord,
+    games: games,
+    currentStreak: currentStreak,
+    maxStreak: maxStreak
+  };
+  window.localStorage.setItem('wordlsoGame', JSON.stringify(wordlso))
+}
+function loader() {
+  let n = window.localStorage.getItem('wordlsoGame')
+  if (n) { let load = JSON.parse(n)
+    guessNum = load.guesses.length
+    guesses = load.guesses
+    winWord = load.winWord
+    games = load.games
+    currentStreak = load.currentStreak
+    maxStreak = load.maxStreak
+    total=0;
+    Object.values(games).forEach(v => total += v)
+    wins = total - games.fail
+    winPercent = Math.round((wins / total)*100)
+    reloader(guesses)
+  } else {
+    getWord();
+  }
+}
+function testLoad() {
+  console.log(window.localStorage.getItem('wordlsoGame'))
+}
+function remover() {
+  window.localStorage.removeItem('wordlsoGame');
+}
+function reloader(words) {
+  words.forEach(g => {
+    let gn = words.indexOf(g)
+    for (let i=0; i<g.length; i++) {
+      let tile = document.getElementById(`g${gn}-${i}b`)
+      let tilec = document.getElementById(`g${gn}-${i}`)
+      let tilep = document.getElementById(`g${gn}-${i}p`)
+      let key = document.getElementById(g[i])
+      used.push(key)
+      tile.innerHTML = g[i]
+      if (g[i] == winWord[i]) {
+        tile.style.backgroundColor = '#226915'
+        tilec.style.borderColor = '#226915'
+        tilep.classList.add('flipper')
+        key.style.backgroundColor = '#226915'
+      } else if (winWord.includes(g[i])) {
+        tile.style.backgroundColor = '#b3a314'
+        tilec.style.borderColor = '#b3a314'
+        tilep.classList.add('flipper')
+        key.style.backgroundColor = '#b3a314'
+      } else {
+        tile.style.backgroundColor = '#454545'
+        tilec.style.borderColor = '#454545'
+        tilep.classList.add('flipper')
+        key.style.backgroundColor = '#454545'
+      }
+    }
+  })
+}
 async function getWord() {
   winWord = answers[Math.floor(Math.random() * answers.length)].toUpperCase();
   // winDisplay.innerHTML = winWord;
@@ -29,20 +133,20 @@ async function guessWord() {
     guesses.push(guess)
     guessNum++
     if (guess == winWord) { gameWin() }
+    else if (guessNum == 6) { gameLose() }
     guess = '';
-    // saver();
+    saver();
   } else {
-    if (guess.length == 5){
-    ping('nwrd')}
+    ping('nwrd')
   }
 }
-
-async function updateTiles() {
+function updateTiles() {
   for (let i=0; i<5; i++) {
     let tile = document.getElementById(`g${guessNum}-${i}b`)
     let tilec = document.getElementById(`g${guessNum}-${i}`)
     let tilep = document.getElementById(`g${guessNum}-${i}p`)
     let key = document.getElementById(guess[i])
+    used.push(key)
     if (guess[i] == winWord[i]) {
       tile.style.backgroundColor = '#226915'
       tilec.style.borderColor = '#226915'
@@ -66,7 +170,7 @@ function updateExamples() {
     let tile = document.getElementById(`ex${i}-0b`)
     let tilec = document.getElementById(`ex${i}-0`)
     let tilep = document.getElementById(`ex${i}-0p`)
-    let key = document.getElementById(guess[i])
+    
     if (i == 0) {
       tile.style.backgroundColor = '#226915'
       tilec.style.borderColor = '#226915'
@@ -83,29 +187,77 @@ function updateExamples() {
     }
   }
 }
-
+function gameStart() {
+  let box = document.getElementById('guessBox')
+  for (let i=0; i<6; i++) {
+    box.innerHTML += `<div class='guessLine' id="guess${i}"></div>`
+    for (let l=0; l<5; l++) {
+      document.getElementById(`guess${i}`).innerHTML += `
+      <div class='tileCon' id='g${i}-${l}'>
+        <div class='tileP'  id='g${i}-${l}p'>
+          <div class="tileF" id='g${i}-${l}f'></div>
+          <div class="tileB" id='g${i}-${l}b'></div>
+        </div>
+      </div>`
+    }
+  }
+  loader()
+  box.innerHTML += `<div class='ping' id='nwrd'>Not in word list</div>`
+}
+function gameReset() {
+  for (let l of used) {
+    l.style.backgroundColor = 'var(--white)';
+  }
+  guessNum = 0;
+  guess = ''
+  guesses = [];
+  used = [];
+  getWord();
+  saver();
+  document.getElementById('guessBox').innerHTML = '';
+  gameStart();
+}
 function gameWin() {
   document.getElementById('modalBG').style.display = 'block';
   document.getElementById('winBox').style.display = 'flex';
   games[guessNum]++;
+  wins++
+  total++
+  currentStreak++;
+  if (currentStreak > maxStreak) {
+    maxStreak = currentStreak;
+  }
+  winPercent = Math.round((wins / total)*100);
+  statBar('winStats')
   // sendStats();
-  guessNum = 0;
-  guess = '';
+ 
 }
-
+function gameLose() {
+  document.getElementById('modalBG').style.display = 'block';
+  document.getElementById('loseBox').style.display = 'flex';
+  document.getElementById('reveal').innerHTML = winWord;
+  games.fail++;
+  total++
+  currentStreak = 0;
+  winPercent = Math.round((wins / total)*100);
+  statBar('loseStats')
+  // sendStats();
+  
+}
 function openWindow(id) {
-  document.getElementById('modalBG').style.display = 'block'
-  document.getElementById(id).style.display = 'flex'
+  document.getElementById('modalBG').style.display = 'block';
+  let el = document.getElementById(id).style.display = 'flex';
   if (id == 'howTo') {
     updateExamples()
   }
+  if (id == 'settingsBox') {
+    statBar('settStats')
+  }
 }
-
 function closeWindow(id) {
   document.getElementById(id).style.display = 'none'
   document.getElementById('modalBG').style.display = 'none'
 }
-
 function backspace() {
   if (!guess) {
     return
@@ -118,13 +270,12 @@ function backspace() {
   };
 }
 function typey(key) {
-  let tile = document.getElementById(`g${guessNum}-${guess.length}f`)
+  if (guessNum <6) {let tile = document.getElementById(`g${guessNum}-${guess.length}f`)
   let tileb = document.getElementById(`g${guessNum}-${guess.length}b`)
   tile.innerHTML = key.toUpperCase()
   tileb.innerHTML = key.toUpperCase()
-  guess += key.toUpperCase()
+  guess += key.toUpperCase()}
 }
-
 function ping(id) {
   document.getElementById(id).style.display = 'flex';
   document.getElementById(id).style.opacity = 1;
@@ -139,7 +290,8 @@ document.addEventListener('keydown', (ev) => {
   if (ev.code == 'Backspace' || ev.code == 'Escape') {
     backspace();
   } else if (ev.key == 'Enter') {
-    guessWord();
+    if (guess.length == 5){
+    guessWord();}
   } else if (ev.code.includes('Key') && ev.key.toUpperCase() == ev.code[3] && guess.length < 5) {    
     typey(ev.key)
   }
@@ -156,47 +308,8 @@ document.ontransitionend = (ev) => {
   }
 }
 
-
-
-
-
-function playerStats() {
-  let total = 0;
-  Object.values(games).forEach(v => total += v) 
-  for (let [k,v] of Object.entries(games)) {
-    let p = v / total
-    console.log(`${k}: ${p}`)
-  }
-}
-function getStats() {
-  let n = window.localStorage.getItem('wordlsoStats')
-  games = JSON.parse(n)
-  console.log(games)
-}
-function sendStats() {
-  console.log('stats saved')
-  window.localStorage.setItem('wordlsoStats', JSON.stringify(games))
-}
-function saver() {
-  let wordlso = {
-    guessNum: guessNum,
-    guess: guess,
-    guesses: guesses,
-  };
-  window.localStorage.setItem('wordlsoGame', JSON.stringify(wordlso))
-}
-function loader() {
-  let n = window.localStorage.getItem('wordlsoGame')
-  let load = JSON.parse(n)
-  console.log(load)
-}
-function remover() {
-  window.localStorage.removeItem('wordlsoGame');
-}
-
-
-
 function hideme() {
+
   // const data = {
   //   labels: Object.keys(games),
   //   datasets: [{
@@ -2543,7 +2656,7 @@ answers = [
   "zebra",
   "zesty",
   "zonal",
-  ]
+  ];
   
 allowed = [
   "aahed",
@@ -13203,6 +13316,6 @@ allowed = [
   "zygon",
   "zymes",
   "zymic"
-  ]
+  ];
 
-  getWord();
+gameStart();

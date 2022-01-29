@@ -10,266 +10,56 @@
     <script defer src="scripts.js" charset="utf-8"></script>
     
   </head>
-
   <body>
     <div id='gameBoard'>
       <div class='topBar'>
-        <div class='title'>Wordlso</div>
-        <button class='help' onclick="openWindow('howTo')">?</button>
-        <!-- <button class='settings' onclick="settings()">&#9881;</button> -->
+        <div class='title'>Wordalso</div>
+        <button class='help hl' onclick="openWindow('howTo')" >?</button>
+        <button class='help hr' onclick="openWindow('settingsBox')">&#10033;</button>
       </div>
-      <div id="guessBox">
-        <div class='guessLine' id="guess0">
-          <div class='tileCon' id='g0-0'>
-            <div class='tileP'  id='g0-0p'>
-              <div class="tileF" id='g0-0f'></div>
-              <div class="tileB" id='g0-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g0-1'>
-            <div class='tileP'  id='g0-1p'>
-              <div class="tileF" id='g0-1f'></div>
-              <div class="tileB" id='g0-1b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g0-2'>
-            <div class='tileP'  id='g0-2p'>
-              <div class="tileF" id='g0-2f'></div>
-              <div class="tileB" id='g0-2b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g0-3'>
-            <div class='tileP'  id='g0-3p'>
-              <div class="tileF" id='g0-3f'></div>
-              <div class="tileB" id='g0-3b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g0-4'>
-            <div class='tileP'  id='g0-4p'>
-              <div class="tileF" id='g0-4f'></div>
-              <div class="tileB" id='g0-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='guessLine' id="guess1">
-          <div class='tileCon' id='g1-0'>
-            <div class='tileP'  id='g1-0p'>
-              <div class="tileF" id='g1-0f'></div>
-              <div class="tileB" id='g1-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g1-1'>
-            <div class='tileP'  id='g1-1p'>
-              <div class="tileF" id='g1-1f'></div>
-              <div class="tileB" id='g1-1b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g1-2'>
-            <div class='tileP'  id='g1-2p'>
-              <div class="tileF" id='g1-2f'></div>
-              <div class="tileB" id='g1-2b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g1-3'>
-            <div class='tileP'  id='g1-3p'>
-              <div class="tileF" id='g1-3f'></div>
-              <div class="tileB" id='g1-3b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g1-4'>
-            <div class='tileP'  id='g1-4p'>
-              <div class="tileF" id='g1-4f'></div>
-              <div class="tileB" id='g1-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='guessLine' id="guess2">
-          <div class='tileCon' id='g2-0'>
-            <div class='tileP'  id='g2-0p'>
-              <div class="tileF" id='g2-0f'></div>
-              <div class="tileB" id='g2-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g2-1'>
-            <div class='tileP'  id='g2-1p'>
-              <div class="tileF" id='g2-1f'></div>
-              <div class="tileB" id='g2-1b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g2-2'>
-            <div class='tileP'  id='g2-2p'>
-              <div class="tileF" id='g2-2f'></div>
-              <div class="tileB" id='g2-2b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g2-3'>
-            <div class='tileP'  id='g2-3p'>
-              <div class="tileF" id='g2-3f'></div>
-              <div class="tileB" id='g2-3b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g2-4'>
-            <div class='tileP'  id='g2-4p'>
-              <div class="tileF" id='g2-4f'></div>
-              <div class="tileB" id='g2-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='guessLine' id="guess3">
-          <div class='tileCon' id='g3-0'>
-            <div class='tileP'  id='g3-0p'>
-              <div class="tileF" id='g3-0f'></div>
-              <div class="tileB" id='g3-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g3-1'>
-            <div class='tileP'  id='g3-1p'>
-              <div class="tileF" id='g3-1f'></div>
-              <div class="tileB" id='g3-1b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g3-2'>
-            <div class='tileP'  id='g3-2p'>
-              <div class="tileF" id='g3-2f'></div>
-              <div class="tileB" id='g3-2b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g3-3'>
-            <div class='tileP'  id='g3-3p'>
-              <div class="tileF" id='g3-3f'></div>
-              <div class="tileB" id='g3-3b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g3-4'>
-            <div class='tileP'  id='g3-4p'>
-              <div class="tileF" id='g3-4f'></div>
-              <div class="tileB" id='g3-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='guessLine' id="guess4">
-          <div class='tileCon' id='g4-0'>
-            <div class='tileP'  id='g4-0p'>
-              <div class="tileF" id='g4-0f'></div>
-              <div class="tileB" id='g4-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g4-1'>
-            <div class='tileP'  id='g4-1p'>
-              <div class="tileF" id='g4-1f'></div>
-              <div class="tileB" id='g4-1b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g4-2'>
-            <div class='tileP'  id='g4-2p'>
-              <div class="tileF" id='g4-2f'></div>
-              <div class="tileB" id='g4-2b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g4-3'>
-            <div class='tileP'  id='g4-3p'>
-              <div class="tileF" id='g4-3f'></div>
-              <div class="tileB" id='g4-3b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g4-4'>
-            <div class='tileP'  id='g4-4p'>
-              <div class="tileF" id='g4-4f'></div>
-              <div class="tileB" id='g4-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='guessLine' id="guess5">
-          <div class='tileCon' id='g5-0'>
-            <div class='tileP'  id='g5-0p'>
-              <div class="tileF" id='g5-0f'></div>
-              <div class="tileB" id='g5-0b'></div>
-            </div>
-          </div>
-          <div class='tileCon' id='g5-1'>
-            <div class='tileP'  id='g5-1p'>
-              <div class="tileF" id='g5-1f'></div>
-              <div class="tileB" id='g5-1b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g5-2'>
-            <div class='tileP'  id='g5-2p'>
-              <div class="tileF" id='g5-2f'></div>
-              <div class="tileB" id='g5-2b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g5-3'>
-            <div class='tileP'  id='g5-3p'>
-              <div class="tileF" id='g5-3f'></div>
-              <div class="tileB" id='g5-3b'></div>
-            </div>
-          </div>
-      
-          <div class='tileCon' id='g5-4'>
-            <div class='tileP'  id='g5-4p'>
-              <div class="tileF" id='g5-4f'></div>
-              <div class="tileB" id='g5-4b'></div>
-            </div>
-          </div>
-        </div>
-        <div class='ping' id='nwrd'>Not in word list</div>
-      </div>
+      <div id="guessBox"></div>
       <div id="keyboard">
-        <div id='keyrow1'>
-          <button data-key="Q" id="Q">Q</button>
-          <button data-key="W" id="W">W</button>
-          <button data-key="E" id="E">E</button>
-          <button data-key="R" id="R">R</button>
-          <button data-key="T" id="T">T</button>
-          <button data-key="Y" id="Y">Y</button>
-          <button data-key="U" id="U">U</button>
-          <button data-key="I" id="I">I</button>
-          <button data-key="O" id="O">O</button>
-          <button data-key="P" id="P">P</button>
+        <div class='keyrow'>
+          <button onclick='typey("Q")' id="Q">Q</button>
+          <button onclick='typey("W")' id="W">W</button>
+          <button onclick='typey("E")' id="E">E</button>
+          <button onclick='typey("R")' id="R">R</button>
+          <button onclick='typey("T")' id="T">T</button>
+          <button onclick='typey("Y")' id="Y">Y</button>
+          <button onclick='typey("U")' id="U">U</button>
+          <button onclick='typey("I")' id="I">I</button>
+          <button onclick='typey("O")' id="O">O</button>
+          <button onclick='typey("P")' id="P">P</button>
         </div>
-        <div id='keyrow2'>
-          <button data-key="A" id="A">A</button>
-          <button data-key="S" id="S">S</button>
-          <button data-key="D" id="D">D</button>
-          <button data-key="F" id="F">F</button>
-          <button data-key="G" id="G">G</button>
-          <button data-key="H" id="H">H</button>
-          <button data-key="J" id="J">J</button>
-          <button data-key="K" id="K">K</button>
-          <button data-key="L" id="L">L</button>
+      <div class='keyrow'>
+        <button onclick='typey("A")' id="A">A</button>
+          <button onclick='typey("S")' id="S">S</button>
+          <button onclick='typey("D")' id="D">D</button>
+          <button onclick='typey("F")' id="F">F</button>
+          <button onclick='typey("G")' id="G">G</button>
+          <button onclick='typey("H")' id="H">H</button>
+          <button onclick='typey("J")' id="J">J</button>
+          <button onclick='typey("K")' id="K">K</button>
+          <button onclick='typey("L")' id="L">L</button>
         </div>
-        <div id='keyrow3'>
-          <button data-key="enter" id="enter" onclick="checkWord()">Enter</button>
-          <button data-key="Z" id="Z">Z</button>
-          <button data-key="X" id="X">X</button>
-          <button data-key="C" id="C">C</button>
-          <button data-key="V" id="V">V</button>
-          <button data-key="B" id="B">B</button>
-          <button data-key="N" id="N">N</button>
-          <button data-key="M" id="M">M</button>
-          <button data-key="back" id="back" onclick="backspace()">Back</button>
+      <div class='keyrow'>
+        <button class='sidekey' id=" id= identer" onclick="checkWord()">Enter</button>
+          <button onclick='typey("Z")' id="Z">Z</button>
+          <button onclick='typey("X")' id="X">X</button>
+          <button onclick='typey("C")' id="C">C</button>
+          <button onclick='typey("V")' id="V">V</button>
+          <button onclick='typey("B")' id="B">B</button>
+          <button onclick='typey("N")' id="N">N</button>
+          <button onclick='typey("M")' id="M">M</button>
+          <button class='sidekey' id="back" onclick="backspace()">Back</button>
         </div>
       </div>
       <div class="modalBG" id='modalBG'>
         <div class='modalBox' id="howTo">
           <div id='instruct'>
-            Guess the word in 6 tries <br>
-            Each guess must be a valid word. Press Enter to submit. <br>
-            The colors of the tiles will change to show how close your guess is. <br>
+            Guess the random wordle in 6 tries <br>
+            Each guess must be a valid word. Press Enter to submit <br>
+            Tiles will change colors showing how close your guess is <br><br>
           </div>
           <div id='examples'>Examples:
             <div class='guessLine' id="ex0">
@@ -284,7 +74,7 @@
               <div class='tileCon exTile' id='ex0-3'>R</div>
               <div class='tileCon exTile' id='ex0-4'>T</div>
             </div>
-            The H is in the word and in the correct spot. <br>
+            The H is in the word and in the correct spot. <br><br>
             <div class='guessLine' id="ex1">
               <div class='tileCon exTile' id='ex1-1'>C</div>
               <div class='tileCon exTile' id='ex1-2'>H</div>
@@ -297,7 +87,7 @@
               <div class='tileCon exTile' id='ex1-3'>R</div>
               <div class='tileCon exTile' id='ex1-4'>T</div>
             </div>
-            The A is in the word, but not in the correct spot. <br>
+            The A is in the word, but not in the correct spot. <br><br>
             <div class='guessLine' id="ex2">
               <div class='tileCon exTile'>A</div>
               <div class='tileCon exTile'>P</div>
@@ -310,27 +100,41 @@
                 </div>
               </div>
             </div>
-            The T is not in the word.
+            The T is not in the word. <br>
           </div>
-          <button onclick="closeWindow('howTo')">&#10006;</button>
+          <button class='close' onclick="closeWindow('howTo')">&#10006;</button>
         </div>
         <div class='modalBox' id="winBox">
-          You did it!
+          You did it! <br>
+          <div class='statBar' id='winStats'></div>
           <button onclick="closeWindow('winBox')">Yay</button>
+          <button onclick="closeWindow('winBox'); gameReset()">New Word</button>
+          <button class='close' onclick="closeWindow('winBox')">&#10006;</button>
+        </div>
+        <div class='modalBox' id="loseBox">
+          Oh no! The wordle was <span id='reveal'></span> <br>
+          <div class='statBar' id='loseStats'></div>
+          <button onclick="closeWindow('loseBox')">Boo</button>
+          <button onclick="closeWindow('winBox'); gameReset()">New Word</button>
+          <button class='close' onclick="closeWindow('loseBox')">&#10006;</button>
         </div>
         <div class='modalBox' id="statBox">
-          <div id='statBar'>
+          <div class='statBar'>
             <div>
-              <p>0</p>
-              <p>0</p>
-              <p>0</p>
-              <p>0</p>
+              <div>0</div>
+              <div>played</div>
             </div>
             <div>
-              <p>played</p>
-              <p>win %</p>
-              <p>current streak</p>
-              <p>longest streak</p>
+              <div>0</div>
+              <div>win %</div>
+            </div>
+            <div>
+              <div>0</div>
+              <div>current streak</div>
+            </div>
+            <div>
+              <div>0</div>
+              <div>longest streak</div>
             </div>
           </div>
           <div id='graphBox'>
@@ -339,19 +143,22 @@
           <button onclick="closeWindow('statBox')">close</button>
         </div>
         <div class='modalBox' id="settingsBox">
-          settings menu
-          <button onclick='closeWindow("settingsBox"); openWindow("howTo")'>How To</button>
-          <button onclick='getWord()'>new word</button>
-          <button onclick="closeWindow('settingsBox')">close</button>
+          Statistics <br>
+          <div class='statBar' id='settStats'></div>
+          <button onclick='closeWindow("settingsBox"); gameReset()'>New Word</button>
+          <button class='close' onclick="closeWindow('settingsBox')">&#10006;</button>
         </div>
       </div>
     </div>
-    <!-- <p id='winWord'>to win!</p>
-    <button onclick='getWord()'>new word</button>
-    <button onclick='sendStats()'>stats Save</button>
-    <button onclick='getStats()'>stats Get</button>
-    <button onclick='saver()'>saver</button>
-    <button onclick='loader()'>loader</button>
-    <button onclick='remover()'>remover</button> -->
+    <div id='devBox'>
+      <!-- <p id='winWord'>to win!</p>
+      <button onclick='getWord()'>new word</button>
+      <button onclick='sendStats()'>stats Save</button>
+      <button onclick='getStats()'>stats Get</button>
+      <button onclick='showMe()'>see</button>
+      <button onclick='saver()'>saver</button>
+      <button onclick='testLoad()'>loader</button>
+      <button onclick='remover()'>remover</button>-->
+    </div>
   </body>
 </html>
