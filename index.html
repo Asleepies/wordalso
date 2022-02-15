@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="scripts.js" charset="utf-8"></script>
+    <script defer type='module' src="main.js" charset="utf-8"></script>
     
   </head>
   <body>
@@ -137,28 +137,26 @@
               <div>longest streak</div>
             </div>
           </div>
-          <div id='graphBox'>
-            <canvas id="statGraph"></canvas>
-          </div>
           <button onclick="closeWindow('statBox')">close</button>
         </div>
         <div class='modalBox' id="settingsBox">
-          Statistics <br>
+          STATISTICS <br>
           <div class='statBar' id='settStats'></div>
+          GUESS DISTRIBUTION
+          <div class='graphBox' id='settingsGraph'></div> <br>
           <button onclick='closeWindow("settingsBox"); gameReset()'>New Word</button>
           <button class='close' onclick="closeWindow('settingsBox')">&#10006;</button>
         </div>
       </div>
     </div>
-    <div id='devBox'>
-      <!-- <p id='winWord'>to win!</p>
-      <button onclick='getWord()'>new word</button>
-      <button onclick='sendStats()'>stats Save</button>
-      <button onclick='getStats()'>stats Get</button>
+    <!-- <div id='devBox'>
       <button onclick='showMe()'>see</button>
       <button onclick='saver()'>saver</button>
       <button onclick='testLoad()'>loader</button>
-      <button onclick='remover()'>remover</button>-->
-    </div>
+      <button onclick='remover()'>remover</button>
+      <button onclick='getWord()'>new word</button>
+      <button onclick='sendStats()'>stats Save</button>
+      <button onclick='getStats()'>stats Get</button>
+    </div> -->
   </body>
 </html>

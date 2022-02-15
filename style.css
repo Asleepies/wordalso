@@ -246,12 +246,31 @@ body {
 .statBar div div:nth-child(1) {
   font-size: 2.5em;
 }
-#graphBox {
-  width: 80%;
-  flex-direction: column;
-  border: 1px dotted blue;
-}
 #settingsBox {
   display: none;
   position: relative;
+}
+.graphBox {
+  font-family: sans-serif;
+  font-weight: bolder;
+  width: 80%;
+}
+.graphLine {
+  margin: 4px;
+  width: 100%;
+  display: flex;
+}
+.graphLabel {
+  margin-right: 2px;
+}
+.graphBar {
+  max-width: 96%;
+  background-color: rgb(83, 83, 83);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.graphNum {
+  position: absolute;
+  right: 1px;
 }
