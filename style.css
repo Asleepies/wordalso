@@ -96,34 +96,43 @@ body {
   position: relative;
 }
 .guessLine {
-  /* border: 1px solid blue; */
   display: inline-flex;
   padding: 2px;
   justify-content: center;
   align-items: center;
 }
 .tileCon {
-  border: 2px solid gray;
-  /* position: relative;  */
   width: var(--tile);
   height: var(--tile);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 3px 4px;
 }
 .tileP {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 1s;
-  
+  transition: transform .5s;
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.guessLine :nth-child(2) .tileP {
+  transition-delay: .5s;
+}
+.guessLine :nth-child(3) .tileP {
+  transition-delay: 1s;
+}
+.guessLine :nth-child(4) .tileP {
+  transition-delay: 1.5s;
+}
+.guessLine :nth-child(5) .tileP {
+  transition-delay: 2s;
+}
 .tileF, .tileB {
+  border: 2px solid #454545;
   position: absolute;
   width: 100%;
   height: 100%;

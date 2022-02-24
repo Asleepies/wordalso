@@ -1,4 +1,3 @@
-// import { allowed, answers } from './modules/wordles.js';
 let answers;
 let allowed;
 
@@ -65,9 +64,6 @@ function graphBox(id) {
     `
   }
 }
-function sendStats() {
-  // console.log('stats saved')
-}
 function showMe() {
   console.log('guessNum', guessNum)
   console.log('guess', guess)
@@ -130,28 +126,28 @@ function reloader(words) {
       tile.innerHTML = g[i]
       if (g[i] == winWord[i]) {
         tile.style.backgroundColor = '#226915'
-        tilec.style.borderColor = '#226915'
+        tile.style.borderColor = '#226915'
         tilep.classList.add('flipper')
         key.style.backgroundColor = '#226915'
       } else if (winWord.includes(g[i])) {
         tile.style.backgroundColor = '#b3a314'
-        tilec.style.borderColor = '#b3a314'
+        tile.style.borderColor = '#b3a314'
         tilep.classList.add('flipper')
         key.style.backgroundColor = '#b3a314'
       } else {
         tile.style.backgroundColor = '#454545'
-        tilec.style.borderColor = '#454545'
+        tile.style.borderColor = '#454545'
         tilep.classList.add('flipper')
         key.style.backgroundColor = '#454545'
       }
     }
   })
 }
-async function getWord() {
+function getWord() {
   winWord = answers[Math.floor(Math.random() * answers.length)].toUpperCase();
   // winDisplay.innerHTML = winWord;
 }
-async function guessWord() {
+function guessWord() {
   if ((answers.includes(guess.toLocaleLowerCase()) || allowed.includes(guess.toLocaleLowerCase()))) {
     updateTiles();
     guesses.push(guess)
@@ -173,17 +169,17 @@ function updateTiles() {
     used.push(key)
     if (guess[i] == winWord[i]) {
       tile.style.backgroundColor = '#226915'
-      tilec.style.borderColor = '#226915'
+      tile.style.borderColor = '#226915'
       tilep.classList.add('flipper')
       key.style.backgroundColor = '#226915'
     } else if (winWord.includes(guess[i])) {
       tile.style.backgroundColor = '#b3a314'
-      tilec.style.borderColor = '#b3a314'
+      tile.style.borderColor = '#b3a314'
       tilep.classList.add('flipper')
       key.style.backgroundColor = '#b3a314'
     } else {
       tile.style.backgroundColor = '#454545'
-      tilec.style.borderColor = '#454545'
+      tile.style.borderColor = '#454545'
       tilep.classList.add('flipper')
       key.style.backgroundColor = '#454545'
     }
@@ -197,15 +193,15 @@ function updateExamples() {
     
     if (i == 0) {
       tile.style.backgroundColor = '#226915'
-      tilec.style.borderColor = '#226915'
+      tile.style.borderColor = '#226915'
       tilep.classList.add('flipper')
     } else if (i == 1) {
       tile.style.backgroundColor = '#b3a314'
-      tilec.style.borderColor = '#b3a314'
+      tile.style.borderColor = '#b3a314'
       tilep.classList.add('flipper')
     } else {
       tile.style.backgroundColor = '#454545'
-      tilec.style.borderColor = '#454545'
+      tile.style.borderColor = '#454545'
       tilep.classList.add('flipper')
       
     }
@@ -332,38 +328,6 @@ document.ontransitionend = (ev) => {
     } else {
     pong(id)}
   }
-}
-
-function hideme() {
-
-  // const data = {
-  //   labels: Object.keys(games),
-  //   datasets: [{
-  //     label: 'My First Dataset',
-  //     data: Object.values(games),
-  //     backgroundColor: [
-  //       'rgba(255, 99, 132)'
-  //     ],
-  //     borderWidth: 1
-  //   }]
-  // };
-  // const config = {
-  //   type: 'bar',
-  //   data: data,
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true
-  //       }
-  //     },
-  //     indexAxis: 'y'
-  //   },
-  // };
-  
-  // var myChart = new Chart(
-  //     document.getElementById('statGraph'),
-  //     config
-  //   );
 }
 
 answers = [
